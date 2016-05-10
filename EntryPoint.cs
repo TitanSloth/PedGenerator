@@ -18,11 +18,10 @@ namespace PedSpawn
             Ped myPed;
             Blip myBlip;
 
-            
+
 
             while (true)
             {
-                bool dead = false;
                 bool player_Has_Weapon = false;
                 // Sets the spawnPoint
                 spawnPoint = Player.GetOffsetPosition(Vector3.RelativeFront * 10);
@@ -54,23 +53,6 @@ namespace PedSpawn
 
                     myPed.Tasks.FightAgainstClosestHatedTarget(20f);
                 }
-
-                while (!dead)
-                {
-                    if (!myPed.Exists())
-                    {
-                        if (!myPed.Exists()) myPed.Delete();
-                        if (!myBlip.Exists()) myPed.Delete();
-
-                        dead = true;
-                    }
-
-                    if (dead)
-                    {
-                        break;
-                    }
-                }
-
                 GameFiber.Yield();
             }
         }
